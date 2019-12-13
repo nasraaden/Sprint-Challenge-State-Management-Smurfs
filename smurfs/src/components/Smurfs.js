@@ -1,45 +1,30 @@
 import React, { useEffect } from "react"
-import axios from "axios"
 import { connect } from 'react-redux';
-import { getSmurf } from "../actions/index"
+import { getSmurf } from "../actions/index";
 
 import SmurfCard from "./SmurfCard"
 
-
 const Smurfs = props => {
-
+    console.log(props)
 
     useEffect(() => {
-        axios.get("http://localhost:3333/smurfs")
-        .then(response => {
-            console.log(response)
-            props.setSmurfs(response.data)
-        })
+        props.getSmurf();
     }, [])
-
-    console.log(props.smurfs)
-
-    const handleChanges = (e) => {
-        e.preventDefault();
-        props.setSmurfs(e.target.value);
-    }
 
     return (
         <div>
-                {props.smurfs.map(smurf => (
-                    <SmurfCard key={smurf.id} smurf={smurf} />
-                ))}
+            {props.state.smurfs.map(smurf => (
+                <SmurfCard key={smurf.id} smurf={smurf} />
+            ))}
         </div>
     )
 }
 
 const mapStateToProps = state => {
-    return {
-      state
-    };
-  };
+    return { state };
+};
 
-  export default connect(
+export default connect(
     mapStateToProps,
     { getSmurf }
-)(Smurfs)
+  )( Smurfs);

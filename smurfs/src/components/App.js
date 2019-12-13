@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Smurfs from "./Smurfs";
 import SmurfForm from "./SmurfForm";
 
 
-const App = (props) => {
+const App = () => {
 
     return (
       <div className="App">
@@ -14,7 +14,6 @@ const App = (props) => {
         <div>Have fun!</div> */}
         <SmurfForm />
         <Smurfs />
-
       </div>
     );
   }

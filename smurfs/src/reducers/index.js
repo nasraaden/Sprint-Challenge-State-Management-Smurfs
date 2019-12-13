@@ -1,7 +1,12 @@
 import {FETCH_SMURF_START, FETCH_SMURF_SUCCESS, FETCH_SMURF_FAILURE} from "../actions/index"
 
 const initialState = {
-    smurf: null,
+    smurfs: [{
+        name: "Brainey",
+        age: 200,
+        height: "5cm",
+        id: 0
+    }],
     isFetching: false,
     error: ""
 }
@@ -16,7 +21,7 @@ export const smurfReducer = (state = initialState, action) => {
         case FETCH_SMURF_SUCCESS:
             return {
                 ...state,
-                smurf: action.payload,
+                smurfs: action.payload,
                 isFetching: false,
                 error: ""
             }
